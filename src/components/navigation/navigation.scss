@@ -9,9 +9,40 @@
     padding-left: 48px;
   }
 
-  &__day {
+  &__day-label {
     position: relative;
     flex: 1;
+    text-align: center;
+    padding: 10px;
     border-left: 1px solid #eee;
+  }
+}
+
+.day-label {
+  &__day-name {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  &__day-number {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &--today {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px; // Ширина круга
+    height: 15px; // Высота круга
+    background-color: yellow; // Подсветка для текущего дня
+    border-radius: 50%; // Круглая форма
+    color: #000;
+    font-weight: bold;
+    margin: 0 auto; // Центрирование внутри контейнера
+  }
+
+  &--today .day-label__day-number {
+    color: red; // Подсветка числа текущего дня
   }
 }

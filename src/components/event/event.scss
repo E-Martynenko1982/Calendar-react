@@ -24,4 +24,16 @@
 .delete-event-btn {
   cursor: pointer;
   border: none;
+  background-color: grey;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: none;
+}
+
+.event:hover .delete-event-btn {
+  display: block;
 }
