@@ -1,6 +1,7 @@
 import React from 'react';
-import './header.scss';
+import PropTypes from 'prop-types';
 import { shortMonths } from '../../utils/dateUtils.js'; // Массив с названиями месяцев
+import './header.scss';
 
 const Header = ({ goToNextWeek, goToPreviousWeek, goToCurrentWeek, weekDates, openModal }) => {
   const uniqueMonths = [...new Set(weekDates.map(day => shortMonths[day.getMonth()]))];
@@ -30,6 +31,13 @@ const Header = ({ goToNextWeek, goToPreviousWeek, goToCurrentWeek, weekDates, op
   );
 };
 
+Header.propTypes = {
+  goToNextWeek: PropTypes.func.isRequired,
+  goToPreviousWeek: PropTypes.func.isRequired,
+  goToCurrentWeek: PropTypes.func.isRequired,
+  weekDates: PropTypes.array.isRequired,
+  openModal: PropTypes.func.isRequired,
+}
 export default Header;
 
 

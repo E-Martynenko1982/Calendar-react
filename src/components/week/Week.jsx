@@ -16,8 +16,8 @@ const Week = ({ weekDates, events, deleteEvent, openModal }) => {
 
         return (
           <Day
-            key={dayStart.getDate()}
-            dataDay={dayStart.getDate()}
+            key={dayStart.toISOString()}
+            dataDay={dayStart.toISOString()}
             dayEvents={dayEvents}
             deleteEvent={deleteEvent}
             openModal={openModal}

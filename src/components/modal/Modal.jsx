@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './modal.scss';
 
 const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
@@ -139,4 +140,10 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
   );
 };
 
+Modal.propTypes = {
+  closeModal: PropTypes.bool.isRequired,
+  addEvent: PropTypes.func.isRequired,
+  selectedTimeSlot: PropTypes.number.isRequired,
+
+}
 export default Modal;
