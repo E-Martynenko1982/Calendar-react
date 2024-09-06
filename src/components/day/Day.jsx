@@ -3,7 +3,7 @@ import Hour from '../hour/Hour';
 
 import './day.scss';
 
-const Day = ({ dataDay, dayEvents, deleteEvent }) => {
+const Day = ({ dataDay, dayEvents, deleteEvent, openModal }) => {
   const hours = Array(24).fill().map((val, index) => index);
 
   return (
@@ -20,6 +20,7 @@ const Day = ({ dataDay, dayEvents, deleteEvent }) => {
             dataHour={hour}
             hourEvents={hourEvents}
             deleteEvent={deleteEvent}
+            openModal={openModal}
           />
         );
       })}

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './modal.scss';
 
-const Modal = ({ closeModal, addEvent }) => {
+const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
   const [eventData, setEventData] = useState({
     title: '',
     description: '',
@@ -10,9 +10,67 @@ const Modal = ({ closeModal, addEvent }) => {
     endTime: '',
   });
 
+  // Функция для округления минут до ближайших 15 минут
+  const roundToNearest15 = (date) => {
+    if (!(date instanceof Date) || isNaN(date.getTime())) {
+      console.error('Invalid date passed to roundToNearest15');
+      return new Date(); // Возвращаем текущее время по умолчанию в случае ошибки
+    }
+
+    const minutes = date.getMinutes();
+    const roundedMinutes = Math.ceil(minutes / 15) * 15;
+    const finalMinutes = roundedMinutes === 60 ? 0 : roundedMinutes;
+    const adjustedHours = roundedMinutes === 60 ? date.getHours() + 1 : date.getHours();
+
+    return new Date(date.setHours(adjustedHours, finalMinutes, 0));
+  };
+
+  // Устанавливаем значения даты и времени на основе выбранного временного слота
+  useEffect(() => {
+    if (selectedTimeSlot && !isNaN(new Date(selectedTimeSlot).getTime())) {
+      const startTime = roundToNearest15(new Date(selectedTimeSlot));
+      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // По умолчанию событие длится 1 час
+
+      setEventData((prevData) => ({
+        ...prevData,
+        date: startTime.toISOString().split('T')[0], // Устанавливаем дату
+        startTime: startTime.toTimeString().slice(0, 5), // Время начала
+        endTime: endTime.toTimeString().slice(0, 5), // Время окончания
+      }));
+    } else {
+      // Если selectedTimeSlot не передан или недействителен, используем текущее время
+      const now = new Date();
+      const startTime = roundToNearest15(now);
+      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
+
+      setEventData((prevData) => ({
+        ...prevData,
+        date: startTime.toISOString().split('T')[0], // Устанавливаем дату
+        startTime: startTime.toTimeString().slice(0, 5), // Время начала
+        endTime: endTime.toTimeString().slice(0, 5), // Время окончания
+      }));
+    }
+  }, [selectedTimeSlot]);
+
+  const handleTimeChange = (event) => {
+    const { name, value } = event.target;
+    const [hours, minutes] = value.split(':').map(Number);
+    const newTime = new Date();
+    newTime.setHours(hours, minutes);
+
+    const roundedTime = roundToNearest15(newTime); // Округляем до ближайших 15 минут
+    setEventData((prevEventData) => ({
+      ...prevEventData,
+      [name]: roundedTime.toTimeString().slice(0, 5),
+    }));
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setEventData({ ...eventData, [name]: value });
+    setEventData((prevEventData) => ({
+      ...prevEventData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -51,7 +109,7 @@ const Modal = ({ closeModal, addEvent }) => {
                 name="startTime"
                 className="event-form__field"
                 value={eventData.startTime}
-                onChange={handleChange}
+                onChange={handleTimeChange}
                 required
               />
               <span>-</span>
@@ -60,7 +118,7 @@ const Modal = ({ closeModal, addEvent }) => {
                 name="endTime"
                 className="event-form__field"
                 value={eventData.endTime}
-                onChange={handleChange}
+                onChange={handleTimeChange}
                 required
               />
             </div>

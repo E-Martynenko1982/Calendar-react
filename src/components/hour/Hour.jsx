@@ -2,9 +2,15 @@ import React from 'react';
 import Event from '../event/Event';
 import { formatMins } from '../../../src/utils/dateUtils.js';
 
-const Hour = ({ dataHour, hourEvents, deleteEvent }) => {
+const Hour = ({ dataHour, hourEvents, deleteEvent, dataDay, openModal }) => {
+  const handleTimeSlotClick = () => {
+    const selectedTimeSlot = new Date(dataDay);
+    selectedTimeSlot.setHours(dataHour, 0, 0, 0);
+    openModal(selectedTimeSlot); // Передаем выбранное время
+  };
+
   return (
-    <div className="calendar__time-slot" data-time={dataHour + 1}>
+    <div className="calendar__time-slot" data-time={dataHour + 1} onClick={handleTimeSlotClick}>
       {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
         const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
@@ -26,5 +32,3 @@ const Hour = ({ dataHour, hourEvents, deleteEvent }) => {
 };
 
 export default Hour;
-
-

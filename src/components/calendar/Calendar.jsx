@@ -6,7 +6,7 @@ import Sidebar from '../sidebar/Sidebar';
 
 import './calendar.scss';
 
-const Calendar = ({ weekDates, events, deleteEvent }) => {
+const Calendar = ({ weekDates, events, deleteEvent, openModal }) => {
 
   console.log('Events in Calendar:', events);
   return (
@@ -19,6 +19,7 @@ const Calendar = ({ weekDates, events, deleteEvent }) => {
             weekDates={weekDates}
             events={events}
             deleteEvent={deleteEvent}
+            openModal={openModal}
           />
         </div>
       </div>

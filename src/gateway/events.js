@@ -9,15 +9,16 @@ export const fetchEvents = () => {
       return response.json();
     })
     .then((data) => {
-      const formattedData = data.map(event => ({
+      return data.map(event => ({
         ...event,
         dateFrom: new Date(event.dateFrom),
-        dateTo: new Date(event.dateTo)
+        dateTo: new Date(event.dateTo),
       }));
-      console.log('Fetched and formatted events:', formattedData);
-      return formattedData;
+    })
+    .catch((error) => {
+      alert("Internal Server Error. Can't display events"); // Показываем сообщение об ошибке
+      console.error('Error fetching events:', error);
     });
-
 };
 
 export const createEvent = (eventData) => {
