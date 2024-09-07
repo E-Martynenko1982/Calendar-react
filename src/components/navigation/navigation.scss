@@ -14,7 +14,6 @@
     flex: 1;
     text-align: center;
     padding: 10px;
-    border-left: 1px solid #eee;
   }
 }
 
@@ -30,19 +29,24 @@
   }
 
   &--today {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 15px; // Ширина круга
-    height: 15px; // Высота круга
-    background-color: yellow; // Подсветка для текущего дня
-    border-radius: 50%; // Круглая форма
-    color: #000;
-    font-weight: bold;
-    margin: 0 auto; // Центрирование внутри контейнера
+    color: blue;
   }
 
   &--today .day-label__day-number {
-    color: red; // Подсветка числа текущего дня
+    background-color: blue; // Синий фон
+    color: white; // Белый цвет текста для контраста
+    border-radius: 50%; // Делаем круг
+    width: 40px; // Устанавливаем фиксированную ширину
+    height: 40px; // Устанавливаем фиксированную высоту
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; // Центрируем круг
+    font-size: 18px; // Размер шрифта
+    font-weight: bold;
+    // Подсветка числа текущего дня
   }
 }

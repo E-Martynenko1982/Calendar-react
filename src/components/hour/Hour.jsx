@@ -11,8 +11,8 @@ const Hour = ({ dataHour, hourEvents, deleteEvent, dataDay, openModal }) => {
 
     const selectedTimeSlot = new Date(dataDay);
     selectedTimeSlot.setHours(dataHour, 0, 0, 0);
-    openModal(selectedTimeSlot); // Передаем выбранное время
-  };
+    openModal(selectedTimeSlot);
+  }; // Закрываем функцию handleTimeSlotClick
 
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1} onClick={handleTimeSlotClick}>
@@ -42,6 +42,6 @@ Hour.propTypes = {
   deleteEvent: PropTypes.func.isRequired,
   dataDay: PropTypes.string.isRequired,
   openModal: PropTypes.func.isRequired,
+};
 
-}
 export default Hour;

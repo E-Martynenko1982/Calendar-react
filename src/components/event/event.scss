@@ -1,6 +1,6 @@
 .event {
   position: absolute;
-  width: 80%;
+  width: 100%;
   background-color: cornflowerblue;
   z-index: 1;
   border-radius: 8px;
@@ -22,14 +22,16 @@
 }
 
 .delete-event-btn {
+  width: 100%;
   cursor: pointer;
   border: none;
+  border-radius: 10px;
   background-color: grey;
   color: white;
   padding: 5px;
   font-size: 12px;
   position: absolute;
-  top: 5px;
+  top: 90%;
   right: 5px;
   display: none;
 }

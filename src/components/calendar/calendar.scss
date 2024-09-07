@@ -28,6 +28,7 @@
   &__week {
     display: flex;
     flex: 1;
+    position: relative;
   }
 
   &__day {
@@ -37,7 +38,7 @@
   }
 
   &__time-slot {
-    height: 59px;
+    height: 60px;
     position: relative;
     border-bottom: 1px solid #eee;
   }
@@ -63,4 +64,15 @@
   &__day-number {
     font-size: 22px;
   }
+}
+
+.red-line {
+  height: 2px;
+
+  position: absolute;
+  width: 100%;
+  background-color: red;
+  z-index: 5;
+  transition: top 0.5s ease;
+  pointer-events: none;
 }

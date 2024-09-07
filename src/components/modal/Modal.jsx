@@ -46,9 +46,9 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
 
       setEventData((prevData) => ({
         ...prevData,
-        date: startTime.toISOString().split('T')[0], // Устанавливаем дату
-        startTime: startTime.toTimeString().slice(0, 5), // Время начала
-        endTime: endTime.toTimeString().slice(0, 5), // Время окончания
+        date: startTime.toISOString().split('T')[0],
+        startTime: startTime.toTimeString().slice(0, 5),
+        endTime: endTime.toTimeString().slice(0, 5),
       }));
     }
   }, [selectedTimeSlot]);
@@ -59,7 +59,7 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
     const newTime = new Date();
     newTime.setHours(hours, minutes);
 
-    const roundedTime = roundToNearest15(newTime); // Округляем до ближайших 15 минут
+    const roundedTime = roundToNearest15(newTime);
     setEventData((prevEventData) => ({
       ...prevEventData,
       [name]: roundedTime.toTimeString().slice(0, 5),
@@ -76,7 +76,7 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addEvent(eventData); // Передаем событие в App
+    addEvent(eventData); // to App
   };
 
   return (
@@ -84,7 +84,7 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
       <div className="modal__content">
         <div className="create-event">
           <button className="create-event__close-btn" onClick={closeModal}>
-            ×
+            +
           </button>
           <form className="event-form" onSubmit={handleSubmit}>
             <input

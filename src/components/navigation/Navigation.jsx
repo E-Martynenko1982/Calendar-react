@@ -1,10 +1,10 @@
 import React from 'react';
 import { days } from '../../utils/dateUtils.js';
 import PropTypes from 'prop-types';
-import './navigation.scss'; // Добавим стили
+import './navigation.scss';
 
 const Navigation = ({ weekDates }) => {
-  const currentDate = new Date(); // Получаем текущую дату
+  const currentDate = new Date();
 
   return (
     <header className="calendar__header">
@@ -12,7 +12,7 @@ const Navigation = ({ weekDates }) => {
         const isToday =
           dayDate.getDate() === currentDate.getDate() &&
           dayDate.getMonth() === currentDate.getMonth() &&
-          dayDate.getFullYear() === currentDate.getFullYear(); // Проверяем, является ли день текущим
+          dayDate.getFullYear() === currentDate.getFullYear(); // is current
 
         return (
           <div

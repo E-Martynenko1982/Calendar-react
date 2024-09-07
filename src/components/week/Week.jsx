@@ -9,7 +9,7 @@ const Week = ({ weekDates, events, deleteEvent, openModal }) => {
       {weekDates.map((dayStart) => {
         const dayEnd = new Date(dayStart.getTime()).setHours(24, 0, 0, 0);
 
-        // Получаем все события для текущего дня
+        // all events
         const dayEvents = events.filter(
           (event) => event.dateFrom >= dayStart && event.dateTo <= dayEnd
         );

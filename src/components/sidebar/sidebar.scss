@@ -22,12 +22,3 @@
     margin-right: 4px;
   }
 }
-
-.red-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  border-top: 2px solid red;
-  z-index: 5;
-  transition: top 0.5s ease;
-}

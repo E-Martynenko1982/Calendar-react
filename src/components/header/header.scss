@@ -7,6 +7,13 @@
 
 .create-event-btn {
   padding: 0 16px;
+  box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
+  transition: 0.5s;
+
+  &:hover {
+    transform: translate(0, -3px);
+    box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
+  }
 
   &__icon {
     margin-right: 8px;
@@ -17,6 +24,13 @@
   &__today-btn {
     margin-left: 32px;
     padding: 0 16px;
+    box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
+    transition: 0.5s;
+  }
+
+  &__today-btn:hover {
+    transform: translate(0, -3px);
+    box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
   }
 
   &__nav-icon {
