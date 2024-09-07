@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
@@ -8,7 +8,6 @@ import './calendar.scss';
 
 const Calendar = ({ weekDates, events, deleteEvent, openModal }) => {
 
-  console.log('Events in Calendar:', events);
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
@@ -35,3 +34,4 @@ Calendar.propTypes = {
 };
 
 export default Calendar;
+

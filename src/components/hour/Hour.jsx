@@ -5,6 +5,10 @@ import { formatMins } from '../../../src/utils/dateUtils.js';
 
 const Hour = ({ dataHour, hourEvents, deleteEvent, dataDay, openModal }) => {
   const handleTimeSlotClick = () => {
+    if (hourEvents.length > 0) {
+      return;
+    }
+
     const selectedTimeSlot = new Date(dataDay);
     selectedTimeSlot.setHours(dataHour, 0, 0, 0);
     openModal(selectedTimeSlot); // Передаем выбранное время

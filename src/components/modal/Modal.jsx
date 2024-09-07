@@ -141,9 +141,13 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
 };
 
 Modal.propTypes = {
-  closeModal: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
   addEvent: PropTypes.func.isRequired,
-  selectedTimeSlot: PropTypes.number.isRequired,
-
+  selectedTimeSlot: PropTypes.instanceOf(Date),
 }
+
+Modal.defaultProps = {
+  selectedTimeSlot: null,
+};
+
 export default Modal;
