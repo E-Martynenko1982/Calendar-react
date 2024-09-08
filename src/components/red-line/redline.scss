@@ -1,0 +1,9 @@
+.red-line {
+  height: 2px;
+  position: absolute;
+  width: 100%;
+  background-color: red;
+  z-index: 5;
+  transition: top 0.5s ease;
+  pointer-events: none;
+}

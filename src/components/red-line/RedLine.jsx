@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const RedLine = () => {
+
   const [linePosition, setLinePosition] = useState(0);
 
   const updateLinePosition = () => {
@@ -8,20 +9,19 @@ const RedLine = () => {
     const currentHour = now.getHours();
     const currentMinutes = now.getMinutes();
 
-    const pixelsPerHour = 60;
-    const pixelsPerMinute = pixelsPerHour / 60;
+    const pixelsPerHour = 60; // 1 час = 60 пикселей
+    const pixelsPerMinute = pixelsPerHour / 60; // 1 минута = 1 пиксель
 
     // Позиция линии в пикселях
     const positionInPixels = currentHour * pixelsPerHour + currentMinutes * pixelsPerMinute;
-    console.log('Red line position:', positionInPixels);
     setLinePosition(positionInPixels);
   };
 
   useEffect(() => {
     updateLinePosition();
-    const intervalId = setInterval(updateLinePosition, 60000);
+    const intervalId = setInterval(updateLinePosition, 60000); // Обновляем каждую минуту
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(intervalId); // Очищаем интервал при размонтировании
   }, []);
 
   return (
@@ -30,4 +30,5 @@ const RedLine = () => {
 };
 
 export default RedLine;
+
 
