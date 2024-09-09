@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import Navigation from './../navigation/Navigation';
+import Navigation from './../navigation/Navigation.jsx';
 import Week from '../week/Week';
-import Sidebar from '../sidebar/Sidebar';
-import RedLine from '../red-line/RedLine';
+import Sidebar from '../sidebar/Sidebar.jsx';
+import RedLine from '../red-line/RedLine.jsx';
 import './calendar.scss';
 
 const Calendar = ({ dataDay, weekDates, events, deleteEvent, openModal }) => {

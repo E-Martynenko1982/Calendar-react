@@ -15,9 +15,10 @@
   }
 
   &__week-container {
+    position: relative;
     display: flex;
     width: 100%;
-    height: fit-content;
+    height: 100%;
   }
 
   &__time-scale {
@@ -64,15 +65,4 @@
   &__day-number {
     font-size: 22px;
   }
-}
-
-.red-line {
-  height: 2px;
-
-  position: absolute;
-  width: 100%;
-  background-color: red;
-  z-index: 5;
-  transition: top 0.5s ease;
-  pointer-events: none;
 }

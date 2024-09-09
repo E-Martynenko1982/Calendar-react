@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './redline.scss';
 
 const RedLine = () => {
   const [linePosition, setLinePosition] = useState(0);
@@ -15,6 +16,7 @@ const RedLine = () => {
     const positionInPixels = currentHour * pixelsPerHour + currentMinutes * pixelsPerMinute;
     console.log('Red line position:', positionInPixels);
     setLinePosition(positionInPixels);
+    console.log('Red line position:', positionInPixels)
   };
 
   useEffect(() => {
