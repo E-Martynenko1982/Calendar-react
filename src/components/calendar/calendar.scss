@@ -12,13 +12,13 @@
   &__body {
     display: flex;
     overflow: auto;
+    min-height: 1440px;
   }
 
   &__week-container {
     position: relative;
     display: flex;
     width: 100%;
-    height: 100%;
   }
 
   &__time-scale {
