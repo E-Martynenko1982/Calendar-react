@@ -11,10 +11,10 @@
 .red-line::before {
   content: "";
   position: absolute;
-  width: 15px; /* Диаметр круга */
-  height: 15px; /* Диаметр круга */
-  background-color: red; /* Цвет круга */
-  border-radius: 50%; /* Создаем круг */
-  top: -7px; /* Позиционирование круга над линией */
-  left: -10px; /* Позиционирование круга перед линией */
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  top: -7px;
+  left: -10px;
 }
