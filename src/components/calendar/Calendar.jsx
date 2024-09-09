@@ -2,19 +2,24 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Navigation from './../navigation/Navigation.jsx';
 import Week from '../week/Week';
+<<<<<<< HEAD
 import Sidebar from '../sidebar/Sidebar.jsx';
 import RedLine from '../red-line/RedLine.jsx';
+=======
+import Sidebar from '../sidebar/Sidebar';
+
+>>>>>>> c858e862a27f44465b364bd93f85c6398dd9b9af
 import './calendar.scss';
 
-const Calendar = ({ dataDay, weekDates, events, deleteEvent, openModal }) => {
-  const isToday = new Date(dataDay).toDateString() === new Date().toDateString();
+const Calendar = ({ weekDates, events, deleteEvent, openModal }) => {
+
 
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
       <div className="calendar__body">
         <div className="calendar__week-container">
-          {isToday && <RedLine />}
+
           <Sidebar />
           <Week
             weekDates={weekDates}

@@ -91,7 +91,7 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
               type="text"
               name="title"
               placeholder="Title"
-              className="event-form__field"
+              className="event-form__field-title"
               value={eventData.title}
               onChange={handleChange}
               required
