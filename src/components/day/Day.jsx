@@ -8,10 +8,10 @@ import './day.scss';
 const Day = ({ dataDay, dayEvents, deleteEvent, openModal }) => {
   const hours = Array(24).fill().map((val, index) => index);
 
-  // const isToday = new Date(dataDay).toDateString() === new Date().toDateString()
+  const isToday = new Date(dataDay).toDateString() === new Date().toDateString()
   return (
     <div className="calendar__day" data-day={dataDay}>
-      <RedLine />
+      {isToday && <RedLine />}
       {hours.map((hour) => {
         const hourEvents = dayEvents.filter(
           (event) => event.dateFrom.getHours() === hour

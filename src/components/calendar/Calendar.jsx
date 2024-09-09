@@ -2,24 +2,26 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Navigation from './../navigation/Navigation.jsx';
 import Week from '../week/Week';
-<<<<<<< HEAD
 import Sidebar from '../sidebar/Sidebar.jsx';
-import RedLine from '../red-line/RedLine.jsx';
-=======
-import Sidebar from '../sidebar/Sidebar';
+//import RedLine from '../red-line/RedLine.jsx';
 
->>>>>>> c858e862a27f44465b364bd93f85c6398dd9b9af
 import './calendar.scss';
 
 const Calendar = ({ weekDates, events, deleteEvent, openModal }) => {
-
-
+  // const isToday = (dateArray) => {
+  //   const today = new Date();
+  //   return dateArray.some(date =>
+  //     date.getDate() === today.getDate() &&
+  //     date.getMonth() === today.getMonth() &&
+  //     date.getFullYear() === today.getFullYear()
+  //   );
+  // };
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
       <div className="calendar__body">
         <div className="calendar__week-container">
-
+          {/* {isToday(weekDates) && <RedLine />} */}
           <Sidebar />
           <Week
             weekDates={weekDates}
