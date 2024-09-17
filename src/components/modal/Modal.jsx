@@ -60,6 +60,7 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
     newTime.setHours(hours, minutes);
 
     const roundedTime = roundToNearest15(newTime);
+
     setEventData((prevEventData) => ({
       ...prevEventData,
       [name]: roundedTime.toTimeString().slice(0, 5),

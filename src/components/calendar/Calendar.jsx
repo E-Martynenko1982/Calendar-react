@@ -4,7 +4,6 @@ import Navigation from './../navigation/Navigation.jsx';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar.jsx';
 
-
 import './calendar.scss';
 
 const Calendar = ({ weekDates, events, deleteEvent, openModal }) => {

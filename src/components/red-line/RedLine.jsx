@@ -13,10 +13,8 @@ const RedLine = () => {
     const pixelsPerHour = 60; // 1 час = 60 пикселей
     const pixelsPerMinute = pixelsPerHour / 60; // 1 минута = 1 пиксель
 
-    // Позиция линии в пикселях
     const positionInPixels = currentHour * pixelsPerHour + currentMinutes * pixelsPerMinute;
     setLinePosition(positionInPixels);
-    console.log('Red line position:', positionInPixels)
   };
 
   useEffect(() => {

@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
-
+import React from 'react';
 import './sidebar.scss';
-
 const Sidebar = () => {
-
 
   return (
     <div className="calendar__time-scale">
-
       {Array(24)
         .fill()
         .map((val, index) => (
