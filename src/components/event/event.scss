@@ -1,12 +1,12 @@
 .event {
-  position: absolute;
   width: 100%;
   background-color: cornflowerblue;
-  z-index: 1;
   border-radius: 8px;
   padding: 8px;
   color: #fff;
   cursor: pointer;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   &__title {
     width: 100%;
@@ -16,6 +16,21 @@
     margin-bottom: 8px;
   }
 
+  &__time {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  &__description {
+    font-size: 12px;
+    margin-top: 4px;
+    color: #e0e0e0;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+
   &:hover {
     font-weight: bold;
     background-color: red;
@@ -23,20 +38,32 @@
 }
 
 .delete-event-btn {
-  width: 100%;
   cursor: pointer;
   border: none;
-  border-radius: 10px;
-  background-color: grey;
-  color: white;
-  padding: 5px;
-  font-size: 12px;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  padding: 10px 15px;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   position: absolute;
-  top: 90%;
-  right: 0px;
-  display: none;
-}
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 
-.event:hover .delete-event-btn {
-  display: block;
+  &:before {
+    content: "🗑️";
+    margin-right: 10px;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
 }

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './event.scss';
 
-const Event = ({ id, height, marginTop, title, time, deleteEvent }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const Event = ({ id, height, marginTop, title, time, description, deleteEvent }) => {
+  const [isVisible, setIsVisible] = useState(false);
 
   const eventStyle = {
     height: `${height}px`,
@@ -14,12 +14,13 @@ const Event = ({ id, height, marginTop, title, time, deleteEvent }) => {
     <div
       style={eventStyle}
       className="event"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
     >
       <div className="event__title">{title}</div>
       <div className="event__time">{time}</div>
-      {isHovered && (
+      <div className="event__description">{description}</div>
+      {isVisible && (
         <button
           className="delete-event-btn"
           onClick={() => deleteEvent(id)}
@@ -37,7 +38,8 @@ Event.propTypes = {
   marginTop: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   deleteEvent: PropTypes.func.isRequired,
-}
-export default Event;
+};
 
+export default Event;

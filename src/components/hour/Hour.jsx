@@ -12,11 +12,11 @@ const Hour = ({ dataHour, hourEvents, deleteEvent, dataDay, openModal }) => {
     const selectedTimeSlot = new Date(dataDay);
     selectedTimeSlot.setHours(dataHour, 0, 0, 0);
     openModal(selectedTimeSlot);
-  }; // Закрываем функцию handleTimeSlotClick
+  };
 
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1} onClick={handleTimeSlotClick}>
-      {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
+      {hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
         const eventStart = `${dateFrom.getHours()}:${formatMins(dateFrom.getMinutes())}`;
         const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
 
@@ -24,10 +24,11 @@ const Hour = ({ dataHour, hourEvents, deleteEvent, dataDay, openModal }) => {
           <Event
             key={id}
             id={id}
-            height={(dateTo.getTime() - dateFrom.getTime()) / (1000 * 60)} // Высота события в минутах
-            marginTop={dateFrom.getMinutes()} // Отступ сверху в зависимости от времени начала
+            height={(dateTo.getTime() - dateFrom.getTime()) / (1000 * 60)}
+            marginTop={dateFrom.getMinutes()}
             time={`${eventStart} - ${eventEnd}`}
             title={title}
+            description={description}
             deleteEvent={deleteEvent}
           />
         );
@@ -45,3 +46,5 @@ Hour.propTypes = {
 };
 
 export default Hour;
+
+
