@@ -1,3 +1,8 @@
+.event-container {
+  position: relative;
+  margin-bottom: 50px; /* Добавляем отступ, чтобы было место для кнопки */
+}
+
 .event {
   width: 100%;
   background-color: cornflowerblue;
@@ -34,36 +39,5 @@
   &:hover {
     font-weight: bold;
     background-color: red;
-  }
-}
-
-.delete-event-btn {
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  background-color: white;
-  color: black;
-  padding: 10px 15px;
-  font-size: 14px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  bottom: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  z-index: 10;
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-
-  &:before {
-    content: "🗑️";
-    margin-right: 10px;
-    font-size: 16px;
-
-    &:hover {
-      background-color: #f0f0f0;
-    }
   }
 }

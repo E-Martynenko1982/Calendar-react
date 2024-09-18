@@ -4,15 +4,15 @@
   height: calc(100vh - 60px);
 
   &__header {
-    display: flex; // Выравниваем элементы по горизонтали
-    height: 100px; // Фиксируем высоту
-    padding-left: 48px; // Отступ слева
-    position: fixed; // Фиксируем компонент при скролле
-    top: 60px; // Сдвигаем вниз на высоту компонента Header
-    left: 0; // Выравниваем по левому краю
-    right: 0; // Выравниваем по правому краю
-    z-index: 9; // Располагаем ниже Header, но выше основного контента
-    background-color: #fff; // Белый фон для предотвращения наложения контента
+    display: flex;
+    height: 100px;
+    padding-left: 48px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
