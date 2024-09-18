@@ -32,11 +32,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: blue;
+    color: rgba(11, 99, 246, 1);
   }
 
   &--today .day-label__day-number {
-    background-color: blue; // Синий фон
+    background-color: rgba(11, 99, 246, 1); // Синий фон
     color: white; // Белый цвет текста для контраста
     border-radius: 50%; // Делаем круг
     width: 40px; // Устанавливаем фиксированную ширину

@@ -6,6 +6,7 @@
 }
 
 .create-event-btn {
+  color: white;
   padding: 0 16px;
   box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
   transition: 0.5s;
@@ -22,6 +23,7 @@
 
 .navigation {
   &__today-btn {
+    color: white;
     margin-left: 32px;
     padding: 0 16px;
     box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
