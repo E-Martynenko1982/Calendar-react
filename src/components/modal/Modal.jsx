@@ -30,13 +30,13 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
   useEffect(() => {
     if (selectedTimeSlot && !isNaN(new Date(selectedTimeSlot).getTime())) {
       const startTime = roundToNearest15(new Date(selectedTimeSlot));
-      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // По умолчанию событие длится 1 час
+      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // По умолчанию длительность события 1 час
 
       setEventData((prevData) => ({
         ...prevData,
-        date: startTime.toISOString().split('T')[0], // Устанавливаем дату
-        startTime: startTime.toTimeString().slice(0, 5), // Время начала
-        endTime: endTime.toTimeString().slice(0, 5), // Время окончания
+        date: startTime.toISOString().split('T')[0], // Устанавливаем корректную дату
+        startTime: startTime.toTimeString().slice(0, 5), // Устанавливаем корректное время начала
+        endTime: endTime.toTimeString().slice(0, 5), // Устанавливаем корректное время окончания
       }));
     } else {
       // Если selectedTimeSlot не передан или недействителен, используем текущее время

@@ -48,6 +48,11 @@ const App = () => {
   };
 
   const openModal = (timeSlot) => {
+    if (!(timeSlot instanceof Date) || isNaN(timeSlot.getTime())) {
+      console.error('Некорректное время передано в модальное окно');
+      return;
+    }
+
     setSelectedTimeSlot(timeSlot); // Устанавливаем выбранное время в состояние
     setIsModalOpen(true);
   };
@@ -103,11 +108,14 @@ const App = () => {
     const eventToDelete = events.find(event => event.id === id);
     const currentTime = new Date();
 
-    if (eventToDelete && eventToDelete.dateFrom.getTime() - currentTime.getTime() <= 15 * 60 * 1000) {
-      alert('Нельзя удалять событие раньше чем за 15 минут до начала.');
-      return;
+    if (eventToDelete) {
+      if (eventToDelete.dateFrom > currentTime) {
+        if (eventToDelete.dateFrom.getTime() - currentTime.getTime() <= 15 * 60 * 1000) {
+          alert('Нельзя удалять событие раньше чем за 15 минут до начала.');
+          return;
+        }
+      }
     }
-
     deleteEventFromServer(id)
       .then(() => {
         loadEvents(); // Перезагружаем события после удаления

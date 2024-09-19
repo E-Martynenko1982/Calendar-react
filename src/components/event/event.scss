@@ -1,9 +1,11 @@
 .event-container {
   position: relative;
-  margin-bottom: 50px; /* Добавляем отступ, чтобы было место для кнопки */
+  margin-bottom: 50px;
 }
 
 .event {
+  position: relative;
+  z-index: 10;
   width: 100%;
   background-color: cornflowerblue;
   border-radius: 8px;
@@ -39,5 +41,6 @@
   &:hover {
     font-weight: bold;
     background-color: red;
+    z-index: 20;
   }
 }

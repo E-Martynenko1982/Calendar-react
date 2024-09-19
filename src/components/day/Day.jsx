@@ -40,3 +40,4 @@ Day.propTypes = {
 };
 
 export default Day;
+

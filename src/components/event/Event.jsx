@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import DeleteButton from '../hour/DeleteButton';
+import DeleteButton from './DeleteButton';
 import './event.scss';
 
 const Event = ({ id, height, marginTop, title, time, description, deleteEvent }) => {
