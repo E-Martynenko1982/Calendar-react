@@ -48,12 +48,10 @@ const App = () => {
   };
 
   const openModal = (timeSlot) => {
-    if (!(timeSlot instanceof Date) || isNaN(timeSlot.getTime())) {
-      console.error('Некорректное время передано в модальное окно');
-      return;
-    }
+    const currentTime = new Date();
+    const timeToUse = timeSlot instanceof Date && !isNaN(timeSlot.getTime()) ? timeSlot : currentTime;
 
-    setSelectedTimeSlot(timeSlot); // Устанавливаем выбранное время в состояние
+    setSelectedTimeSlot(timeToUse);
     setIsModalOpen(true);
   };
 
