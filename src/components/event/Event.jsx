@@ -8,7 +8,7 @@ const Event = ({ id, height, marginTop, title, time, description, deleteEvent })
 
   const eventStyle = {
     height: `${height}px`,
-    marginTop: `${marginTop}px`,
+
   };
 
   const handleMouseEnter = () => {
@@ -29,9 +29,7 @@ const Event = ({ id, height, marginTop, title, time, description, deleteEvent })
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div style={eventStyle} className="event"
-
-      >
+      <div style={eventStyle} className="event">
         <div className="event__title">{title}</div>
         <div className="event__time">{time}</div>
         <div className="event__description">{description}</div>

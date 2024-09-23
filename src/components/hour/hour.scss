@@ -4,7 +4,7 @@
   height: calc(100vh - 60px);
 
   &__time-slot {
-    height: 59px;
+    max-height: 59px;
     position: relative;
     border-bottom: 1px solid #eee;
   }
