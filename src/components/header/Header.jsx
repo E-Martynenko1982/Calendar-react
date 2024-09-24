@@ -3,23 +3,39 @@ import PropTypes from 'prop-types';
 import { shortMonths } from '../../utils/dateUtils.js'; // Массив с названиями месяцев
 import './header.scss';
 
-const Header = ({ goToNextWeek, goToPreviousWeek, goToCurrentWeek, weekDates, openModal }) => {
+const Header = ({ weekStartDate, setWeekStartDate, weekDates, openModal }) => {
   const uniqueMonths = [...new Set(weekDates.map(day => shortMonths[day.getMonth()]))];
+
+  const goToNextWeek = () => {
+    const nextWeekStartDate = new Date(weekStartDate);
+    nextWeekStartDate.setDate(weekStartDate.getDate() + 7);
+    setWeekStartDate(nextWeekStartDate);
+  };
+
+  const goToPreviousWeek = () => {
+    const prevWeekStartDate = new Date(weekStartDate);
+    prevWeekStartDate.setDate(weekStartDate.getDate() - 7);
+    setWeekStartDate(prevWeekStartDate);
+  };
+
+  const goToCurrentWeek = () => {
+    setWeekStartDate(new Date());
+  };
 
   return (
     <header className="header">
       <button className="button create-event-btn" onClick={openModal}>
-        <i className="fas fa-plus create-event-btn__icon"></i>Create
+        <i className="fas fa-plus create-event-btn__icon" />Create
       </button>
       <div className="navigation">
         <button className="navigation__today-btn button" onClick={goToCurrentWeek}>
           Today
         </button>
         <button className="icon-button navigation__nav-icon" onClick={goToPreviousWeek}>
-          <i className="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left" />
         </button>
         <button className="icon-button navigation__nav-icon" onClick={goToNextWeek}>
-          <i className="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right" />
         </button>
         <span className="navigation__displayed-month">
           {uniqueMonths.length === 1
@@ -32,12 +48,11 @@ const Header = ({ goToNextWeek, goToPreviousWeek, goToCurrentWeek, weekDates, op
 };
 
 Header.propTypes = {
-  goToNextWeek: PropTypes.func.isRequired,
-  goToPreviousWeek: PropTypes.func.isRequired,
-  goToCurrentWeek: PropTypes.func.isRequired,
+  weekStartDate: PropTypes.instanceOf(Date).isRequired,
+  setWeekStartDate: PropTypes.func.isRequired,
   weekDates: PropTypes.array.isRequired,
   openModal: PropTypes.func.isRequired,
-}
-export default Header;
+};
 
+export default Header;
 

@@ -6,7 +6,7 @@ import Sidebar from '../sidebar/Sidebar.jsx';
 
 import './calendar.scss';
 
-const Calendar = ({ weekDates, events, deleteEvent, openModal }) => {
+const Calendar = ({ weekDates, events, loadEvents, openModal }) => {
 
   return (
     <section className="calendar">
@@ -18,7 +18,7 @@ const Calendar = ({ weekDates, events, deleteEvent, openModal }) => {
           <Week
             weekDates={weekDates}
             events={events}
-            deleteEvent={deleteEvent}
+            loadEvents={loadEvents}
             openModal={openModal}
           />
         </div>
@@ -30,7 +30,7 @@ const Calendar = ({ weekDates, events, deleteEvent, openModal }) => {
 Calendar.propTypes = {
   weekDates: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
-  deleteEvent: PropTypes.func.isRequired,
+  loadEvents: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
 };
 

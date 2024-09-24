@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .modal {
   position: fixed;
   display: flex;
@@ -5,7 +7,7 @@
   align-items: center;
 
   &__content {
-    background: #fff;
+    background: $background-content;
     padding: 16px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -18,7 +20,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: $background-overlay;
   z-index: 10;
 }
 

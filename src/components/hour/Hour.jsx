@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { formatMins } from '../../../src/utils/dateUtils.js';
 import './hour.scss';
 
-const Hour = ({ dataHour, hourEvents, deleteEvent, dataDay, openModal }) => {
+const Hour = ({ dataHour, hourEvents, dataDay, openModal, loadEvents }) => {
   const handleTimeSlotClick = () => {
     if (hourEvents.length > 0) {
       return;
@@ -29,8 +29,9 @@ const Hour = ({ dataHour, hourEvents, deleteEvent, dataDay, openModal }) => {
             marginTop={dateFrom.getMinutes()}
             time={`${eventStart} - ${eventEnd}`}
             title={title}
+            events={hourEvents}
             description={description}
-            deleteEvent={deleteEvent}
+            loadEvents={loadEvents}
           />
         );
       })}
@@ -41,9 +42,9 @@ const Hour = ({ dataHour, hourEvents, deleteEvent, dataDay, openModal }) => {
 Hour.propTypes = {
   dataHour: PropTypes.number.isRequired,
   hourEvents: PropTypes.array.isRequired,
-  deleteEvent: PropTypes.func.isRequired,
   dataDay: PropTypes.string.isRequired,
   openModal: PropTypes.func.isRequired,
+  loadEvents: PropTypes.func.isRequired,
 };
 
 export default Hour;

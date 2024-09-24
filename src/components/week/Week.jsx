@@ -3,7 +3,7 @@ import Day from '../day/Day';
 
 import './week.scss';
 
-const Week = ({ weekDates, events, deleteEvent, openModal }) => {
+const Week = ({ weekDates, events, loadEvents, openModal }) => {
   return (
     <div className="calendar__week">
       {weekDates.map((dayStart) => {
@@ -19,7 +19,7 @@ const Week = ({ weekDates, events, deleteEvent, openModal }) => {
             key={dayStart.toISOString()}
             dataDay={dayStart.toISOString()}
             dayEvents={dayEvents}
-            deleteEvent={deleteEvent}
+            loadEvents={loadEvents}
             openModal={openModal}
           />
         );

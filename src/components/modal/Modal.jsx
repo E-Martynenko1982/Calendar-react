@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { createEvent } from '../../gateway/events';
 import './modal.scss';
 
-const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
+const Modal = ({ closeModal, selectedTimeSlot, events, loadEvents }) => {
   const [eventData, setEventData] = useState({
     title: '',
     description: '',
@@ -11,11 +12,10 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
     endTime: '',
   });
 
-  // Функция для округления минут до ближайших 15 минут
   const roundToNearest15 = (date) => {
     if (!(date instanceof Date) || isNaN(date.getTime())) {
       console.error('Invalid date passed to roundToNearest15');
-      return new Date(); // Возвращаем текущее время по умолчанию в случае ошибки
+      return new Date();
     }
 
     const minutes = date.getMinutes();
@@ -26,20 +26,18 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
     return new Date(date.setHours(adjustedHours, finalMinutes, 0));
   };
 
-  // Устанавливаем значения даты и времени на основе выбранного временного слота
   useEffect(() => {
     if (selectedTimeSlot && !isNaN(new Date(selectedTimeSlot).getTime())) {
       const startTime = roundToNearest15(new Date(selectedTimeSlot));
-      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // По умолчанию длительность события 1 час
+      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
 
       setEventData((prevData) => ({
         ...prevData,
-        date: startTime.toISOString().split('T')[0], // Устанавливаем корректную дату
-        startTime: startTime.toTimeString().slice(0, 5), // Устанавливаем корректное время начала
-        endTime: endTime.toTimeString().slice(0, 5), // Устанавливаем корректное время окончания
+        date: startTime.toISOString().split('T')[0],
+        startTime: startTime.toTimeString().slice(0, 5),
+        endTime: endTime.toTimeString().slice(0, 5),
       }));
     } else {
-      // Если selectedTimeSlot не передан или недействителен, используем текущее время
       const now = new Date();
       const startTime = roundToNearest15(now);
       const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
@@ -52,6 +50,31 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
       }));
     }
   }, [selectedTimeSlot]);
+
+  const validateEvent = (eventStart, eventEnd, events) => {
+    const sixHoursInMillis = 6 * 60 * 60 * 1000;
+
+    if (eventEnd.getTime() - eventStart.getTime() > sixHoursInMillis) {
+      alert('Событие не может длиться дольше 6 часов.');
+      return false;
+    }
+
+    if (eventStart.toDateString() !== eventEnd.toDateString()) {
+      alert('Событие должно начаться и закончиться в пределах одного дня.');
+      return false;
+    }
+
+    const isOverlapping = events.some(
+      (event) => eventStart < event.dateTo && eventEnd > event.dateFrom
+    );
+
+    if (isOverlapping) {
+      alert('События не могут пересекаться по времени.');
+      return false;
+    }
+
+    return true;
+  };
 
   const handleTimeChange = (event) => {
     const { name, value } = event.target;
@@ -77,7 +100,27 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addEvent(eventData); // to App
+
+    const eventStart = new Date(`${eventData.date}T${eventData.startTime}`);
+    const eventEnd = new Date(`${eventData.date}T${eventData.endTime}`);
+
+    if (validateEvent(eventStart, eventEnd, events)) {
+      const newEvent = {
+        title: eventData.title,
+        dateFrom: eventStart,
+        dateTo: eventEnd,
+        description: eventData.description,
+      };
+
+      createEvent(newEvent)
+        .then(() => {
+          closeModal();
+          loadEvents();
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
+    }
   };
 
   return (
@@ -143,9 +186,10 @@ const Modal = ({ closeModal, addEvent, selectedTimeSlot }) => {
 
 Modal.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  addEvent: PropTypes.func.isRequired,
   selectedTimeSlot: PropTypes.instanceOf(Date),
-}
+  events: PropTypes.array.isRequired,
+  loadEvents: PropTypes.func.isRequired,
+};
 
 Modal.defaultProps = {
   selectedTimeSlot: null,

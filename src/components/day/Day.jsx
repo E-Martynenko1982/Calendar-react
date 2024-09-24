@@ -3,12 +3,12 @@ import Hour from '../hour/Hour.jsx';
 import RedLine from '../red-line/RedLine.jsx';
 import PropTypes from 'prop-types';
 
-import './day.scss';
 
-const Day = ({ dataDay, dayEvents, deleteEvent, openModal }) => {
-  const hours = Array(24).fill().map((val, index) => index);
 
-  const isToday = new Date(dataDay).toDateString() === new Date().toDateString()
+const Day = ({ dataDay, dayEvents, openModal, loadEvents }) => {
+  const hours = Array(24).fill().map((_, index) => index);
+
+  const isToday = new Date(dataDay).toDateString() === new Date().toDateString();
   return (
     <div className="calendar__day" data-day={dataDay}>
       {isToday && <RedLine />}
@@ -22,9 +22,9 @@ const Day = ({ dataDay, dayEvents, deleteEvent, openModal }) => {
             key={dataDay + hour}
             dataHour={hour}
             hourEvents={hourEvents}
-            deleteEvent={deleteEvent}
             openModal={openModal}
             dataDay={dataDay}
+            loadEvents={loadEvents}
           />
         );
       })}
@@ -35,8 +35,8 @@ const Day = ({ dataDay, dayEvents, deleteEvent, openModal }) => {
 Day.propTypes = {
   dataDay: PropTypes.string.isRequired,
   dayEvents: PropTypes.array.isRequired,
-  deleteEvent: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
+  loadEvents: PropTypes.func.isRequired,
 };
 
 export default Day;
