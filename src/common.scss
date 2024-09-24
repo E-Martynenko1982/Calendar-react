@@ -23,8 +23,8 @@
   align-items: center;
 
   &__content {
-    background: #fff;
     padding: 16px;
+    background: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
   }
@@ -34,17 +34,17 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100vw;
   height: 100vh;
   background-color: #cccccc45;
-  z-index: 10;
 }
 
 .popup {
   &__content {
     position: absolute;
-    background: #fff;
     padding: 16px;
+    background: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
   }

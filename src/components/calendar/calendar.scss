@@ -10,10 +10,10 @@
   }
 
   &__body {
+    padding-top: 160px;
     display: flex;
     overflow: hidden;
     min-height: 1440px;
-    padding-top: 160px;
   }
 
   &__week-container {
@@ -28,9 +28,9 @@
   }
 
   &__week {
+    position: relative;
     display: flex;
     flex: 1;
-    position: relative;
   }
 
   &__day {
@@ -40,8 +40,8 @@
   }
 
   &__time-slot {
-    height: 60px;
     position: relative;
+    height: 60px;
     border-bottom: 1px solid #eee;
   }
 
@@ -51,11 +51,11 @@
 }
 
 .day-label {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  height: 100%;
   opacity: 0.6;
 
   &__day-name {

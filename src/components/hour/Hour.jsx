@@ -2,7 +2,6 @@ import React from 'react';
 import Event from '../event/Event';
 import PropTypes from 'prop-types';
 import { formatMins } from '../../../src/utils/dateUtils.js';
-import './hour.scss';
 
 const Hour = ({ dataHour, hourEvents, dataDay, openModal, loadEvents }) => {
   const handleTimeSlotClick = () => {

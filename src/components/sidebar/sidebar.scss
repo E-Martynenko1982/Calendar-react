@@ -4,21 +4,21 @@
   height: calc(100vh - 60px);
 
   &__time-scale {
+    position: relative;
     height: 100%;
     width: 48px;
-    position: relative; // Добавляем относительное позиционирование для правильного отображения red-line
   }
 }
 
 .time-slot {
-  height: 60px; // Высота каждого временного слота соответствует одному часу
+  height: 60px;
   width: 48px;
   text-align: right;
 
   &__time {
-    font-size: 12px;
-    opacity: 0.7;
     top: -12px;
     margin-right: 4px;
+    font-size: 12px;
+    opacity: 0.7;
   }
 }

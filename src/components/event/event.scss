@@ -5,11 +5,11 @@
 
 .event {
   position: relative;
+  padding: 8px;
   z-index: 5;
   width: 100%;
   background-color: cornflowerblue;
   border-radius: 8px;
-  padding: 8px;
   color: #fff;
   cursor: pointer;
   overflow-y: auto;
@@ -35,22 +35,21 @@
   }
 
   &__title {
+    margin-bottom: 8px;
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 8px;
   }
 
   &__time {
-    font-size: 14px;
     margin-bottom: 4px;
+    font-size: 14px;
   }
 
   &__description {
     margin-top: 4px;
     font-size: 12px;
-
     color: #e0e0e0;
     word-wrap: break-word;
     overflow: hidden;
@@ -65,28 +64,28 @@
 }
 
 .delete-event-btn {
-  cursor: pointer;
+  position: absolute;
+  padding: 10px 15px;
+  left: 50%;
+  bottom: -45px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: black;
   border: none;
   border-radius: 4px;
   background-color: white;
-  color: black;
-  padding: 10px 15px;
-  font-size: 14px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  bottom: -45px;
-  left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  z-index: 10;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
+  cursor: pointer;
 
   &:before {
-    content: "🗑️";
     margin-right: 10px;
+    content: "🗑️";
     font-size: 16px;
   }
 

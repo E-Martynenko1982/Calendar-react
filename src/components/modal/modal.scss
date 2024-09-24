@@ -7,8 +7,8 @@
   align-items: center;
 
   &__content {
-    background: $background-content;
     padding: 16px;
+    background: $background-content;
     border: 1px solid #ccc;
     border-radius: 8px;
   }
@@ -18,10 +18,10 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100vw;
   height: 100vh;
   background-color: $background-overlay;
-  z-index: 10;
 }
 
 .create-event {
@@ -30,13 +30,12 @@
 
   &__close-btn {
     margin-left: auto;
+    width: 24px;
+    height: 24px;
     transform: rotate(45deg) scale(2);
     outline: none;
     border: none;
-    cursor: pointer;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
     background: transparent;
     cursor: pointer;
   }
@@ -58,13 +57,12 @@
   }
 
   &__submit-btn {
+    padding: 8px 16px;
     margin: 8px;
     margin-left: auto;
-    border: none;
     color: #fff;
     background-color: cornflowerblue;
     border: none;
-    padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
   }
