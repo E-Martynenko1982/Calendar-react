@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .header {
   position: fixed;
   padding: 0 48px;
@@ -8,13 +10,13 @@
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: #fff;
+  background-color: $background-content;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .create-event-btn {
   padding: 0 16px;
-  color: white;
+  color: $event-color;
   box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
   transition: 0.5s;
 
@@ -32,7 +34,7 @@
   &__today-btn {
     margin-left: 32px;
     padding: 0 16px;
-    color: white;
+    color: $event-color;
     box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
     transition: 0.5s;
   }

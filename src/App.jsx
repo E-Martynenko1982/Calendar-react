@@ -14,9 +14,7 @@ const App = () => {
 
   const loadEvents = () => {
     fetchEvents().then((fetchedEvents) => {
-      if (fetchedEvents) {
-        setEvents(fetchedEvents);
-      }
+      setEvents(fetchedEvents);
     });
   };
 
@@ -26,9 +24,10 @@ const App = () => {
 
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
-  const isValidDate = (date) => date instanceof Date && !isNaN(date.getTime());
 
-  const openModal = (timeSlot) => {
+
+  const openModal = (timeSlot = null) => {
+    const isValidDate = (date) => date instanceof Date && !isNaN(date.getTime());
     const currentTime = new Date();
     const timeToUse = isValidDate(timeSlot) ? timeSlot : currentTime;
     setSelectedTimeSlot(timeToUse);
@@ -45,7 +44,7 @@ const App = () => {
         weekStartDate={weekStartDate}
         setWeekStartDate={setWeekStartDate}
         weekDates={weekDates}
-        openModal={(timeSlot = null) => openModal(timeSlot)}
+        openModal={openModal}
       />
       <Calendar
         weekDates={weekDates}

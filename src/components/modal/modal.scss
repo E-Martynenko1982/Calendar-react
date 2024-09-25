@@ -9,7 +9,7 @@
   &__content {
     padding: 16px;
     background: $background-content;
-    border: 1px solid #ccc;
+    border: 1px solid $border-calendar;
     border-radius: 8px;
   }
 }
@@ -53,14 +53,14 @@
 
   &__field-title {
     border: none;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid $event-background;
   }
 
   &__submit-btn {
     padding: 8px 16px;
     margin: 8px;
     margin-left: auto;
-    color: #fff;
+    color: $background-content;
     background-color: cornflowerblue;
     border: none;
     border-radius: 8px;

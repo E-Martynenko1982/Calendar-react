@@ -1,9 +1,11 @@
+@import "../../variables.scss";
+
 .red-line {
   position: absolute;
   z-index: 10;
   height: 2px;
   width: 100%;
-  background-color: red;
+  background-color: $red-line;
   transition: top 0.5s ease;
   pointer-events: none;
 
@@ -14,7 +16,7 @@
     content: "";
     width: 15px;
     height: 15px;
-    background-color: red;
+    background-color: $red-line;
     border-radius: 50%;
   }
 }

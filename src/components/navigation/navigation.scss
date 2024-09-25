@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .calendar {
   &__header {
     position: fixed;
@@ -8,7 +10,7 @@
     z-index: 9;
     display: flex;
     height: 100px;
-    background-color: #fff;
+    background-color: $background-content;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
@@ -35,7 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgba(11, 99, 246, 1);
+    color: $nav-color;
   }
 
   &--today .day-label__day-number {
@@ -47,8 +49,8 @@
     height: 40px;
     font-size: 18px;
     font-weight: bold;
-    background-color: rgba(11, 99, 246, 1);
-    color: white;
+    background-color: $nav-color;
+    color: $event-color;
     border-radius: 50%;
   }
 }

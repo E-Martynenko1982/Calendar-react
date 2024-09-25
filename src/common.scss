@@ -1,12 +1,14 @@
+@import "./variables.scss";
+
 .button {
   height: 40px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid $event-hover;
   outline: none;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-  background-color: rgba(11, 99, 246, 1);
+  background-color: $nav-color;
 }
 
 .icon-button {
@@ -24,8 +26,8 @@
 
   &__content {
     padding: 16px;
-    background: #fff;
-    border: 1px solid #ccc;
+    background: $event-color;
+    border: 1px solid $event-hover;
     border-radius: 8px;
   }
 }
@@ -37,15 +39,15 @@
   z-index: 10;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: $background-overlay;
 }
 
 .popup {
   &__content {
     position: absolute;
     padding: 16px;
-    background: #fff;
-    border: 1px solid #ccc;
+    background: $background-content;
+    border: 1px solid $border-calendar;
     border-radius: 8px;
   }
 }
