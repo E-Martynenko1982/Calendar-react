@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { createEvent } from '../../gateway/events';
+import { roundToNearest15, validateEvent } from '../../utils/dateUtils';
 import './modal.scss';
 
 const Modal = ({ closeModal, selectedTimeSlot, events, loadEvents }) => {
@@ -12,69 +13,29 @@ const Modal = ({ closeModal, selectedTimeSlot, events, loadEvents }) => {
     endTime: '',
   });
 
-  const roundToNearest15 = (date) => {
-    if (!(date instanceof Date) || isNaN(date.getTime())) {
-      console.error('Invalid date passed to roundToNearest15');
-      return new Date();
-    }
 
-    const minutes = date.getMinutes();
-    const roundedMinutes = Math.ceil(minutes / 15) * 15;
-    const finalMinutes = roundedMinutes === 60 ? 0 : roundedMinutes;
-    const adjustedHours = roundedMinutes === 60 ? date.getHours() + 1 : date.getHours();
-
-    return new Date(date.setHours(adjustedHours, finalMinutes, 0));
-  };
 
   useEffect(() => {
+    const initializeEventData = (time) => {
+      const startTime = roundToNearest15(time);
+      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
+
+      setEventData((prevData) => ({
+        ...prevData,
+        date: startTime.toISOString().split('T')[0],
+        startTime: startTime.toTimeString().slice(0, 5),
+        endTime: endTime.toTimeString().slice(0, 5),
+      }));
+    };
+
     if (selectedTimeSlot && !isNaN(new Date(selectedTimeSlot).getTime())) {
-      const startTime = roundToNearest15(new Date(selectedTimeSlot));
-      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
-
-      setEventData((prevData) => ({
-        ...prevData,
-        date: startTime.toISOString().split('T')[0],
-        startTime: startTime.toTimeString().slice(0, 5),
-        endTime: endTime.toTimeString().slice(0, 5),
-      }));
+      initializeEventData(new Date(selectedTimeSlot));
     } else {
-      const now = new Date();
-      const startTime = roundToNearest15(now);
-      const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
-
-      setEventData((prevData) => ({
-        ...prevData,
-        date: startTime.toISOString().split('T')[0],
-        startTime: startTime.toTimeString().slice(0, 5),
-        endTime: endTime.toTimeString().slice(0, 5),
-      }));
+      initializeEventData(new Date());
     }
   }, [selectedTimeSlot]);
 
-  const validateEvent = (eventStart, eventEnd, events) => {
-    const sixHoursInMillis = 6 * 60 * 60 * 1000;
 
-    if (eventEnd.getTime() - eventStart.getTime() > sixHoursInMillis) {
-      alert('Событие не может длиться дольше 6 часов.');
-      return false;
-    }
-
-    if (eventStart.toDateString() !== eventEnd.toDateString()) {
-      alert('Событие должно начаться и закончиться в пределах одного дня.');
-      return false;
-    }
-
-    const isOverlapping = events.some(
-      (event) => eventStart < event.dateTo && eventEnd > event.dateFrom
-    );
-
-    if (isOverlapping) {
-      alert('События не могут пересекаться по времени.');
-      return false;
-    }
-
-    return true;
-  };
 
   const handleTimeChange = (event) => {
     const { name, value } = event.target;
@@ -117,9 +78,6 @@ const Modal = ({ closeModal, selectedTimeSlot, events, loadEvents }) => {
           closeModal();
           loadEvents();
         })
-        .catch((error) => {
-          console.error(error.message);
-        });
     }
   };
 

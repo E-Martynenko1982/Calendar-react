@@ -12,6 +12,7 @@ Layout support desktop (up-to-1920) version
 - [BEM methodology](https://en.bem.info/methodology/)
 - [React](https://reactjs.org/)
 - [mocApi](https://mockapi.io/projects)
+
 ### Author
 
 - Evgeniy Martynenko

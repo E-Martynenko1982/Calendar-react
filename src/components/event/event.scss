@@ -3,6 +3,11 @@
 .event-container {
   position: relative;
   margin-bottom: 50px;
+
+  &:hover .delete-event-btn {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .event {
@@ -16,7 +21,7 @@
   cursor: pointer;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-width: thin; /* Для Firefox */
+  scrollbar-width: thin; /* For Firefox */
   scrollbar-color: $event-scrollbar transparent;
 
   &::-webkit-scrollbar {
@@ -60,7 +65,7 @@
   }
 
   &:hover {
-    background-color: rgba(11, 99, 246, 1);
+    background-color: $nav-color;
     z-index: 20;
   }
 }
@@ -79,11 +84,12 @@
   border-radius: 4px;
   background-color: $event-color;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(20px);
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
   cursor: pointer;
+  opacity: 0; /* Hide the button initially */
 
   &:before {
     margin-right: 10px;
