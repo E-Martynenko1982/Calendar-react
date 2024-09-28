@@ -9,6 +9,7 @@ const Day = ({ dataDay, dayEvents, openModal, loadEvents }) => {
   const hours = Array(24).fill().map((_, index) => index);
 
   const isToday = new Date(dataDay).toDateString() === new Date().toDateString();
+
   return (
     <div className="calendar__day" data-day={dataDay}>
       {isToday && <RedLine />}

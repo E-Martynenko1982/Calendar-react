@@ -22,7 +22,7 @@
 
   &:hover {
     transform: translate(0, -3px);
-    box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
+    box-shadow: 0 20px 40px 0 $nav-color;
   }
 
   &__icon {
@@ -35,13 +35,13 @@
     margin-left: 32px;
     padding: 0 16px;
     color: $event-color;
-    box-shadow: 0 5px 15px 0 rgba(11, 99, 246, 1);
+    box-shadow: 0 5px 15px 0 $nav-color;
     transition: 0.5s;
   }
 
   &__today-btn:hover {
     transform: translate(0, -3px);
-    box-shadow: 0 20px 40px 0 rgba(11, 99, 246, 1);
+    box-shadow: 0 20px 40px 0 $nav-color;
   }
 
   &__nav-icon {

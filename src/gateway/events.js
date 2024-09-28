@@ -37,7 +37,6 @@ export const createEvent = (event) => {
     })
     .catch((error) => {
       console.error('Error creating event:', error.message);
-      throw error;
     });
 };
 
@@ -52,6 +51,5 @@ export const deleteEvent = (id) => {
     })
     .catch((error) => {
       console.error('Error deleting event:', error.message);
-      throw error;
     });
 };

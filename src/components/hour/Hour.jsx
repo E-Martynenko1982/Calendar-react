@@ -11,7 +11,12 @@ const Hour = ({ dataHour, hourEvents, dataDay, openModal, loadEvents }) => {
 
     const selectedTimeSlot = new Date(dataDay);
     selectedTimeSlot.setHours(dataHour, 0, 0, 0);
-    openModal(selectedTimeSlot);
+
+    // Validation moved to handleTimeSlotClick
+    const isValidDate = (date) => date instanceof Date && !isNaN(date.getTime());
+    const timeToUse = isValidDate(selectedTimeSlot) ? selectedTimeSlot : new Date();
+
+    openModal(timeToUse);
   };
 
   return (
@@ -47,5 +52,3 @@ Hour.propTypes = {
 };
 
 export default Hour;
-
-

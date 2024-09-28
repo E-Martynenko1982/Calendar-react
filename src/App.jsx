@@ -8,8 +8,7 @@ import './common.scss';
 
 const App = () => {
   const [weekStartDate, setWeekStartDate] = useState(new Date());
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+  const [modal, setModal] = useState({ isOpen: false, startTime: null });
   const [events, setEvents] = useState([]);
 
   const loadEvents = () => {
@@ -24,18 +23,13 @@ const App = () => {
 
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
 
-
-
-  const openModal = (timeSlot = null) => {
-    const isValidDate = (date) => date instanceof Date && !isNaN(date.getTime());
-    const currentTime = new Date();
-    const timeToUse = isValidDate(timeSlot) ? timeSlot : currentTime;
-    setSelectedTimeSlot(timeToUse);
-    setIsModalOpen(true);
+  // Simplified openModal function
+  const openModal = (timeSlot) => {
+    setModal({ isOpen: true, startTime: timeSlot });
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setModal({ isOpen: false, startTime: null });
   };
 
   return (
@@ -52,10 +46,10 @@ const App = () => {
         openModal={openModal}
         loadEvents={loadEvents}
       />
-      {isModalOpen && (
+      {modal.isOpen && (
         <Modal
           closeModal={closeModal}
-          selectedTimeSlot={selectedTimeSlot}
+          selectedTimeSlot={modal.startTime}
           events={events}
           loadEvents={loadEvents}
         />
@@ -65,5 +59,3 @@ const App = () => {
 };
 
 export default App;
-
-
